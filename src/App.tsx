@@ -10,22 +10,9 @@ import { ThemeProvider } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
-function App() {
-  const outerTheme= createTheme({
-    palette:{
-      primary:grey,
-    },
-    components:{
-      MuiButtonBase:{
-        defaultProps:{
-          disableRipple:true,        
-        }
-      }
-    }
-  });
-
+function App(props:{html?:string}) { 
    
-  let data:Array<BlockInfo> = [
+  let sampleData:Array<BlockInfo> = [
     {
     type:'heading',
     content: {
@@ -59,10 +46,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
-      <ThemeProvider theme={outerTheme}>
-        <DMEditor data={data} />
-      </ThemeProvider>
-    </div>
+        <DMEditor data={props.html?[{type:'p', content:{layout:{}, data:props.html}}]:sampleData} /></div>
   );
 }
 
