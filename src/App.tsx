@@ -11,21 +11,13 @@ import { grey } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 function App(props:{html?:string}) { 
-  let data = [{
-    type:'imagetext',
-    settings:{childrenHorizontal: true},
-    children: [
-    {type:'text', content:'<p>Hello</p><p>Good</p>', settings:{}},
-    {type:'image', content:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOdlzDI3LftAb4bwkJOWODiyLE9bpB3Wr8r9A60RGy1A&s', settings:{}}
-    ], allowedType:["text"]},
-    {type:'text', content:'<p>Content</p>', settings:{}},
-];
+  let data:any = [];
 
   return (
     <div className="App">
       <header className="App-header">
       </header>
-        <DMEditor data={props.html?[{type:'p', content:{layout:{}, data:props.html}}]:data} />        
+        <DMEditor data={data} />        
         </div>
   );
 }
