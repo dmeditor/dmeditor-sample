@@ -41,6 +41,8 @@ const Gallery = (props:ToolRenderProps) =>{
     {props.adding&&<div>
         <Browse config={util.getConfig().browse} multi={true} trigger={true} selected={[]} contenttype={['image']} onConfirm={onConfirm} />
         </div>}
+
+    {list.length===0&&<div className="empty-message">Please select images</div>}
     <div className={"dm-columns columns-"+columns}>
         {list.map(item=><div style={{display:'inline-block'}} className='gallery-image'><img src={process.env.REACT_APP_ASSET_URL+'/'+item.image}></img></div>)}
     </div>
