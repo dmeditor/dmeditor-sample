@@ -17,14 +17,13 @@ import Cookies from 'universal-cookie';
 import './DMEditorInit';
 
 import ErrorBoundary from './ErrorBoundary';
-import { DMEditorInit } from './DMEditorInit';
+import './DMEditorInit';
 
 const cookies = new Cookies();
 
 function App(props:{html?:string}) { 
   util.setConfig( Config );
   // cookies.set( util.getCookieKey(),'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjY2MjM0MjIsImd1aWQiOiI4YWIzOGNkNS1hM2IyLTRmOTYtYjU2OS0yMDdkYWViM2VjYzQiLCJ1c2VyX2lkIjoxfQ.vIX4pO-NhYlNEocah8jW3aK1DmakqT2J00R7W0tij7s');
-  DMEditorInit();
 
   return (
     <div className="App">
