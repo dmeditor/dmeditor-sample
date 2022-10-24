@@ -11,13 +11,25 @@ import { grey } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 function App(props:{html?:string}) { 
-  let data:any = [];
 
   return (
     <div className="App">
       <header className="App-header">
       </header>
-        <DMEditor data={data} />        
+        <DMEditor data={[{
+      type:'text',
+      content:{ 
+        initialValue:[
+          {type: 'paragraph',
+          children:[ 
+            {
+              text: 'Please input more text.',
+            }
+            ]
+          }
+        ],
+      }
+    }]} />        
         </div>
   );
 }
