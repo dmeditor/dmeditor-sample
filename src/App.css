@@ -42,3 +42,37 @@ body{
 .content-viewmode-block .field-viewmode-inline img{
   max-width: 100%;
 }
+
+.field-viewmode-inline.fieldtype-image .fieldtype-image-img{
+  width: 80px;
+}
+
+.dm-columns > div{
+  display: inline-block;
+  padding: 5px;
+}
+
+.columns-2 > div{
+  width: 50%;
+
+}
+
+.columns-3 > div{
+  width: 33.3%;
+}
+
+.columns-4 > div{
+  width: 25%;
+}
+
+.columns-5 > div{
+  width: 20%;
+}
+
+.columns-6 > div{
+  width: 16.6%;
+}
+
+.gallery-image img{
+  width: 100%;
+}
