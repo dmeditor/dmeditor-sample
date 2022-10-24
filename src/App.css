@@ -37,3 +37,8 @@ body{
     transform: rotate(360deg);
   }
 }
+
+
+.content-viewmode-block .field-viewmode-inline img{
+  max-width: 100%;
+}

@@ -6,6 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "noImplicitAny":false,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -13,6 +14,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
+    "noStrictGenericChecks": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
