@@ -60,7 +60,7 @@ const Gallery = (props:ToolRenderProps) =>{
         </PropertyGroup>
     </BlockProperty>
     {adding&&<div>
-        <Browse config={util.getConfig().browse} multi={true} trigger={true} selected={[]} contenttype={['image']} onConfirm={onConfirm} />
+        <Browse config={util.getConfig().browse} multi={true} trigger={true} selected={[]} contenttype={['image']} onCancel={props.onCancel} onConfirm={onConfirm} />
         </div>}
 
     {adding&&ids.length===0&&<div className="empty-message">Please select images</div>}
