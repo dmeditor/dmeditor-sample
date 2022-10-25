@@ -26,7 +26,7 @@ export default class ErrorBoundary extends React.Component<any, {error:any, erro
     // maybe need different error boundary components / error types.
     if (this.state.errorInfo) {
       return (
-        <div className="error-main alert alert-warning">
+        <div>
           <div>{error&&<div>
             {error.code=='0001'&&<div>
                 <Login />

@@ -9,19 +9,34 @@ import Radio from '@mui/material/Radio';
 
 import Browse from 'digimaker-ui/Browse';
 //@ts-ignore
-import util from 'digimaker-ui/util'
-import { useState } from "react";
+import util,{FetchWithAuth} from 'digimaker-ui/util'
+import { useEffect, useState } from "react";
 import { Button, FormControlLabel, RadioGroup } from "@mui/material";
 
 
 const Gallery = (props:ToolRenderProps) =>{
+    const [ids, setIds] = useState(props.data.content as any);
     const [list, setList] = useState([] as any);
     const [sourceType, setSourceType] = useState('fixed');
     const [columns, setColumns] = useState(props.data.settings.columns);
 
     const onConfirm = (list:any)=>{
+        let ids:Array<any> = [];
+        for(var item of list){
+            ids.push(item.cid);
+        }
         setList(list);
+        let data = props.data;
+        props.onChange({...data, content: ids});
     }
+
+    useEffect(()=>{
+        if( ids.length > 0 ){
+            FetchWithAuth(process.env.REACT_APP_REMOTE_URL+'/content/list/image?cid='+ids.join(',')).then(data=>{
+                setList(data.data.list);
+            });
+        }
+    },[]);
 
     return <div>
     <BlockProperty active={props.active}>
@@ -56,5 +71,5 @@ menu: {
   category: "content",
   icon: <CollectionsOutlined />,
 },
-initData: {type:'content_gallery', content:[[]], settings:{contentType:'image', columns:3, max:12}},
+initData: {type:'content_gallery', content:[], settings:{contentType:'image', columns:3}},
 render: (props:ToolRenderProps)=> <Gallery {...props} /> }
