@@ -42,7 +42,7 @@ const Gallery = (props:ToolRenderProps) =>{
     },[]);
 
     return <div>
-    <BlockProperty active={props.active}>
+    <BlockProperty title="Gallery" active={props.active}>
         <PropertyGroup header='Settings'>
             <PropertyItem label='Columns'>
                 <Ranger min={1} max={6} defaultValue={columns} onChange={v=>setColumns(v)} />
