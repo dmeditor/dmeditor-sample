@@ -327,7 +327,7 @@
     },
     "viewmode":{
       "inline":{
-        "article":["name"],
+        "article":["title"],
         "image":["image"],
         "user":["name"]
       },
