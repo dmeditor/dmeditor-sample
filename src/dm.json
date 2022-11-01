@@ -328,11 +328,13 @@
     "viewmode":{
       "inline":{
         "article":["title"],
+        "folder":["title"],
         "image":["image"],
         "user":["name"]
       },
       "block":{
         "article":["title"],
+        "folder":["title"],
         "image":["image","name"]
       }
     }
