@@ -12,7 +12,7 @@ import DMInit from 'digimaker-ui/DMInit';
 import util,{FetchWithAuth} from 'digimaker-ui/util'
 import { useEffect, useState,useRef } from "react";
 // import { Button, FormControlLabel, RadioGroup,Dialog,DialogActions,DialogContent,DialogTitle,DialogContentText} from "@mui/material";
-import {IconButton,TextField,Select,MenuItem, ToggleButtonGroup,ToggleButton, Button, FormControlLabel, RadioGroup,Dialog,DialogActions,DialogContent,DialogTitle,DialogContentText,styled, imageListItemBarClasses } from "@mui/material";
+import {IconButton,Input,TextField,Select,MenuItem, ToggleButtonGroup,ToggleButton, Button, FormControlLabel, RadioGroup,Dialog,DialogActions,DialogContent,DialogTitle,DialogContentText,styled, Stack,Alert } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 
 export interface DialogTitleProps {
@@ -34,18 +34,25 @@ const ContentGrid = (props:ToolRenderProps) =>{
     const [limit, setLimit] = useState(10);
     const [sortby, setSortby] = useState(["priority desc", "published desc"]);
     const [isChange, setisChange] = useState(false);
-    const [currentList, setCurrentList] = useState([] as any);
-    const limitInputRef = useRef(null)
+    const [currentList, setCurrentList] = useState({id:'',parent_id:''});
+    const limitInputRef:any = useRef(null)
     let level=10;
     let sortbyArr=[{type1:'priority',type2:'desc'}, {type1:'published',type2:'desc'}]
 
     const handleClickOpen = () => {
       setOpen(true);
       setAdding(true);
+      setAdding(false);
+      setTimeout(()=>{setAdding(true);},10)
+      restData();
+
     };
+    const restData = ()=>{
+      setSortby(["priority desc", "published desc"])
+      setCurrentList({id:'',parent_id:''})
+    }
   
     const handleClose = (event?, reason?) => {
-      console.log(event,reason)
       if (reason && reason === "backdropClick") 
       return;
       setOpen(false);
@@ -55,17 +62,18 @@ const ContentGrid = (props:ToolRenderProps) =>{
     
 
     const onConfirm = (list:any)=>{
+      if(!((list??'')!=='')){
+        alert('Please select a file  before confirm')
+       return      
+      }
       let idsArray:Array<any> = [];
       for(var item of list){
         idsArray.push(item.id);
       }
       setIds(idsArray)
       setAdding(false);
-      const limitVal:any=limitInputRef.current
-      console.log("limit",limitVal)
       setisChange(!isChange);
       let data = props.data;
-      // initData: {type:'content_grid', content:[1,2,3,4, 5,6], settings:{contentType:'article', columns:3}},
       props.onChange({...data, content: idsArray});
     }
 
@@ -74,22 +82,22 @@ const ContentGrid = (props:ToolRenderProps) =>{
     }
 
     const onConfirmDynamic = ()=>{
-      let idsArray:Array<any> = [];
-      for(var item of currentList){
-        idsArray.push(item.id);
+      if(!((currentList.id??'')!=='')){
+        alert('This is a warning alert — check it out!')
+        return;
       }
+      let idsArray:Array<any> = [];
+      idsArray.push(currentList.id);
       setIds(idsArray)
       setAdding(false);
       setisChange(!isChange);
+      setLimit(limitInputRef.current.firstChild.firstChild.value)
       let data = props.data;
-      let settings={contentType:'article', columns:3, max:limit, source:{type:'dynamic', parent:list.id, sortby:sortby }};
-        // initData: {type:'content_grid', content:[], settings:{contentType:'article', columns:3, space:5}}
-        // initData: {type:'content_grid', content:[[]], settings:{contentType:'article', columns:3, max:12, source:{type:'dynamic', parent:3, sortby:["priority desc", "published dec"] }}},
-        // settings:{contentType:'article', columns:3, max:12, source:{type:'dynamic', parent:3, sortby:["priority desc", "published dec"] }}},
+      let settings={contentType:'article', columns:3, max:limitInputRef.current.firstChild.firstChild.value, source:{type:'dynamic', parent:currentList.id, sortby:sortby }};
         props.onChange({...data, content:[[]],settings:{...data.settings,...settings}});
+        console.log({...data, content:[[]],settings:{...data.settings,...settings}})
+     
     }
-    
-
 
     const getList = ()=>{
       console.log("获取 数据 啦",ids,limit,sortby)
@@ -109,24 +117,24 @@ const ContentGrid = (props:ToolRenderProps) =>{
       getList();
     },[isChange]);
 
-    const changeLimit = (v:any)=>{
-      setLimit(v);
-      // setisChange(!isChange);
-    }
 
     const handleChange = (e:any,index:any) => {
       let sortbys=[...sortby]
       sortbys[index]=e.target.value+' '+sortbys[index].split(' ')[1]
-      console.log(sortbys)
       setSortby([...sortbys])
     };
     const handleSortChange =(e:any,val: any,index:any) => {
       let sortbys=[...sortby]
       sortbys[index]=sortbys[index].split(' ')[0]+' '+val
-      console.log('sortbysdd',sortbys)
       setSortby([...sortbys])
     };
-
+    const changeLimit = (v:any)=>{
+      setLimit(v);
+      let data = props.data;
+      let settings={contentType:'article', columns:3, max:v, source:{type:'dynamic', parent:currentList.id, sortby:sortby }};
+      props.onChange({...data, content:[[]],settings:{...data.settings,...settings}});
+      setisChange(!isChange);
+    }
    
     return <div>
     <BlockProperty title="Gallery" active={props.active}>
@@ -146,7 +154,7 @@ const ContentGrid = (props:ToolRenderProps) =>{
             </PropertyItem>
             {sourceType=='dynamic'&&
             <PropertyItem label='Top'>
-                <Ranger min={2} max={50} defaultValue={limit} onFinish={v=>changeLimit(v)} />
+                <Ranger min={2} max={50} value={limit} defaultValue={limit} onFinish={v=>changeLimit(v)} />
             </PropertyItem>
             }
         </PropertyGroup>
@@ -216,7 +224,7 @@ const ContentGrid = (props:ToolRenderProps) =>{
           </div>
           <div>
             <label style={{width:'60px'}}>Top:</label>
-            <TextField  sx={{marginLeft:'10px'}} size="small" variant="outlined"  defaultValue={limit} onChange={(event:any)=>setLimit(event.target.value)}/>
+            <TextField ref={limitInputRef} sx={{marginLeft:'10px'}} size="small" variant="outlined" defaultValue={'10'} />
           </div>
         </DialogContent>
         <DialogActions>
@@ -227,7 +235,7 @@ const ContentGrid = (props:ToolRenderProps) =>{
      }
     </div>}
       
-    {ids.length===0&&<div className="empty-message">Please select Content</div>}
+    {(ids.length===0||list.length==0)&&<div className="empty-message">Please select Content</div>}
     
     <div className={"dm-columns columns-"+columns}>
         {list.map(item=><div style={{display:'inline-block', paddingLeft:space, paddingTop: space}} className='gallery-image'>
