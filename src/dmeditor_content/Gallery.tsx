@@ -8,7 +8,6 @@ import { Ranger } from "dmeditor/utils/Ranger";
 import Radio from '@mui/material/Radio';
 
 import Browse from 'digimaker-ui/Browse';
-//@ts-ignore
 import util,{FetchWithAuth} from 'digimaker-ui/util'
 import { useEffect, useState } from "react";
 import { Button, FormControlLabel, RadioGroup } from "@mui/material";
@@ -60,7 +59,7 @@ const Gallery = (props:ToolRenderProps) =>{
         </PropertyGroup>
     </BlockProperty>
     {adding&&<div>
-        <Browse config={util.getConfig().browse} multi={true} trigger={true} selected={[]} contenttype={['image']} onCancel={props.onCancel} onConfirm={onConfirm} />
+        <Browse parent={461} multi={true} trigger={true} selected={[]} contenttype={['image']} onCancel={props.onCancel} onConfirm={onConfirm} />
         </div>}
 
     {adding&&ids.length===0&&<div className="empty-message">Please select images</div>}

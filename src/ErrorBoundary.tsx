@@ -1,6 +1,5 @@
 import { env } from 'process';
 import React, { Component } from 'react';
-import config from './dm.json';
 import { Login } from './Login';
 
 export default class ErrorBoundary extends React.Component<any, {error:any, errorInfo:any}> {
@@ -10,10 +9,6 @@ export default class ErrorBoundary extends React.Component<any, {error:any, erro
   }
 
   componentDidCatch(error:any, errorInfo:any) {
-    if( error.code=='0001' && window.location.pathname == process.env.PUBLIC_URL+ config.default_url ){
-      window.location.href = process.env.PUBLIC_URL+'/login';
-      return;
-    }
     this.setState({
       error: error,
       errorInfo: errorInfo
