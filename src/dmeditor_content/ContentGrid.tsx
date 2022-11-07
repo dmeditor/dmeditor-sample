@@ -11,8 +11,7 @@ import DMInit from 'digimaker-ui/DMInit';
 //@ts-ignore
 import util,{FetchWithAuth} from 'digimaker-ui/util'
 import { useEffect, useState,useRef } from "react";
-// import { Button, FormControlLabel, RadioGroup,Dialog,DialogActions,DialogContent,DialogTitle,DialogContentText} from "@mui/material";
-import {IconButton,Input,TextField,Select,MenuItem, ToggleButtonGroup,ToggleButton, Button, FormControlLabel, RadioGroup,Dialog,DialogActions,DialogContent,DialogTitle,DialogContentText,styled, Stack,Alert } from "@mui/material";
+import {IconButton,Input,TextField,Select,MenuItem, ToggleButtonGroup,ToggleButton, Button, FormControlLabel, RadioGroup,Dialog,DialogActions,DialogContent,DialogTitle,Tabs ,Tab , Box } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 
 export interface DialogTitleProps {
@@ -22,29 +21,32 @@ export interface DialogTitleProps {
 }
 
 const ContentGrid = (props:ToolRenderProps) =>{
-  console.log("props===>",props)
     const [ids, setIds] = useState(props.data.content as any);
     const [sourceType, setSourceType] = useState('fixed');
+    const [selectSourceType, setSelectSourceType] = useState('fixed');
     const [list, setList] = useState([] as any);
     const [space, setSpace] = useState(props.data.settings.space);    
     const [columns, setColumns] = useState(props.data.settings.columns);
-    const [adding, setAdding] = useState(!props.adding);
+    const [adding, setAdding] = useState(props.adding);
 
-    const [open, setOpen] = useState(true);
     const [limit, setLimit] = useState(10);
     const [sortby, setSortby] = useState(["priority desc", "published desc"]);
     const [isChange, setisChange] = useState(false);
     const [currentList, setCurrentList] = useState({id:'',parent_id:''});
+    const [currentListM, setCurrentListM] = useState([] as any);
     const limitInputRef:any = useRef(null)
     let level=10;
     let sortbyArr=[{type1:'priority',type2:'desc'}, {type1:'published',type2:'desc'}]
 
+
+    const [tabValue, setTabValue] = useState(0);
+
     const handleClickOpen = () => {
-      setOpen(true);
+      console.log("props",props)
       setAdding(true);
       setAdding(false);
       setTimeout(()=>{setAdding(true);},10)
-      restData();
+      // restData();
 
     };
     const restData = ()=>{
@@ -52,22 +54,47 @@ const ContentGrid = (props:ToolRenderProps) =>{
       setCurrentList({id:'',parent_id:''})
     }
   
-    const handleClose = (event?, reason?) => {
+    const handleClose = (event?:any, reason?:any) => {
       if (reason && reason === "backdropClick") 
       return;
-      setOpen(false);
-      props.onCancel();
+      setAdding(false);
+      // props.onCancel();
+      if(selectSourceType=='fixed'){
+        setSourceType('fixed')
+      }else{
+        setSourceType('dynamic')
+      }
     };
+    const onConfirmSelect= (list:any,type:string)=>{
+      console.log("onConfirmInline",list,type)
+      if(type=='one'){
+        setCurrentList(list);
+      }else{
+        setCurrentListM(list)
+      }
+    }
 
-    
+    const onConfirm = ()=>{
+      if(sourceType=='fixed'){
+        onConfirmFixed();
+        setCurrentList({id:'',parent_id:''})
+        setSelectSourceType('fixed')
+      }else{
+        onConfirmDynamic();
+        setCurrentListM([])
+        setSelectSourceType('dynamic')
+      }
 
-    const onConfirm = (list:any)=>{
-      if(!((list??'')!=='')){
+      
+    }
+
+    const onConfirmFixed = ()=>{
+      if(currentListM.length==0){
         alert('Please select a file  before confirm')
-       return      
+       return  false    
       }
       let idsArray:Array<any> = [];
-      for(var item of list){
+      for(var item of currentListM){
         idsArray.push(item.id);
       }
       setIds(idsArray)
@@ -75,12 +102,8 @@ const ContentGrid = (props:ToolRenderProps) =>{
       setisChange(!isChange);
       let data = props.data;
       props.onChange({...data, content: idsArray});
+      console.log({...data, content: idsArray})
     }
-
-    const onConfirmInline = (list:any)=>{
-      setCurrentList(list);
-    }
-
     const onConfirmDynamic = ()=>{
       if(!((currentList.id??'')!=='')){
         alert('This is a warning alert — check it out!')
@@ -96,7 +119,6 @@ const ContentGrid = (props:ToolRenderProps) =>{
       let settings={contentType:'article', columns:3, max:limitInputRef.current.firstChild.firstChild.value, source:{type:'dynamic', parent:currentList.id, sortby:sortby }};
         props.onChange({...data, content:[[]],settings:{...data.settings,...settings}});
         console.log({...data, content:[[]],settings:{...data.settings,...settings}})
-     
     }
 
     const getList = ()=>{
@@ -135,7 +157,10 @@ const ContentGrid = (props:ToolRenderProps) =>{
       props.onChange({...data, content:[[]],settings:{...data.settings,...settings}});
       setisChange(!isChange);
     }
-   
+
+    const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+      setSourceType(newValue);
+    };
     return <div>
     <BlockProperty title="Gallery" active={props.active}>
         <PropertyGroup header='Settings'>
@@ -146,28 +171,21 @@ const ContentGrid = (props:ToolRenderProps) =>{
                 <Ranger min={1} max={20} defaultValue={space} onChange={v=>setSpace(v)} />
             </PropertyItem>
             <PropertyItem label='Source'>
-            <RadioGroup value={sourceType} onChange={e=>setSourceType(e.target.value)}>
-                <FormControlLabel value="fixed" control={<Radio size="small" />} label="Fixed" />
-                <FormControlLabel value="dynamic" control={<Radio size="small" />} label="Dynamic" />
-            </RadioGroup>
-                <Button onClick={handleClickOpen}>Choose</Button>
+                {selectSourceType}
+                <div><Button onClick={handleClickOpen}>Choose</Button></div>
             </PropertyItem>
-            {sourceType=='dynamic'&&
-            <PropertyItem label='Top'>
+            {selectSourceType=='dynamic'&&
+            <PropertyItem label='Limit'>
                 <Ranger min={2} max={50} value={limit} defaultValue={limit} onFinish={v=>changeLimit(v)} />
             </PropertyItem>
             }
         </PropertyGroup>
     </BlockProperty>
-    {adding&&<div>
-      {sourceType==='fixed'?
-      <Browse config={util.getConfig().browse}  multi={true} trigger={true} selected={""} contenttype={['article']} onCancel={props.onCancel} onConfirm={onConfirm} /> 
-     :
-      <Dialog 
+    {adding&& <Dialog 
         fullWidth={true}
         maxWidth={'md'}
         onClose={handleClose}
-        open={open}>
+        open={adding}>
           <DialogTitle>Select
             {(
               <IconButton
@@ -185,58 +203,68 @@ const ContentGrid = (props:ToolRenderProps) =>{
             )}
           </DialogTitle>
         <DialogContent>
-          <Browse config={util.getConfig().browse} inline={true} multi={false} trigger={true} selected={""} contenttype={['folder']} onCancel={props.onCancel} onConfirm={onConfirmInline}/>
-          <div style={{display:"flex"}}>
-            <label style={{width:'60px'}}>Order:</label>
-            <div>
-              {sortbyArr.map((item,index)=>{
-                return (
-                  <div style={{display:"flex",margin:'0  0 10px 10px'}}>
-                    <Select
-                      sx={{ minWidth: 300,marginRight:'10px'}}
-                      size="small"
-                      defaultValue={item.type1}
-                      value={sortby.length>0?sortby[index].split(' ')[0]:item.type1}
-                      onChange={(e)=>{handleChange(e,index)}}
-                    >
-                      <MenuItem value={"priority"}>priority</MenuItem>
-                      <MenuItem value={'published'}>published</MenuItem>
-                      <MenuItem value={'modified'}>modified</MenuItem>
-                    </Select>
-                    <ToggleButtonGroup
-                      value={sortby.length>0?sortby[index].split(' ')[1]:item.type2}
-                      exclusive
-                      onChange={(e,val)=>handleSortChange(e,val,index)}
-                      aria-label="text alignment"
-                    >
-                      <ToggleButton value="desc" >
-                        <ArrowUpwardOutlined />
-                      </ToggleButton>
-                      <ToggleButton value="asc" >
-                        <ArrowDownwardOutlined />
-                      </ToggleButton>
-                    </ToggleButtonGroup>
-                  </div>
-                )
-              })}
-            
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={sourceType} onChange={handleTabChange} aria-label="basic tabs example">
+              <Tab label="Fixed" value='fixed'/>
+              <Tab label="Dynamic" value='dynamic' />
+            </Tabs>
+          </Box>
+          {sourceType=="fixed"&&<div className="tab-content">
+            <Browse inline={true}  multi={true} trigger={true} selected={currentListM} contenttype={['article',"folder"]}  onConfirm={(value:any)=>{onConfirmSelect(value,'more')}} /> 
+          </div>}
+          {sourceType=="dynamic"&&<div className="tab-content">
+            <Browse  inline={true} multi={false} trigger={true} selected={currentList.id==''?'':currentList} contenttype={['folder']} onCancel={props.onCancel} onConfirm={(value:any)=>{onConfirmSelect(value,'one')}}/>
+            <div style={{display:"flex"}}>
+              <label style={{width:'60px'}}>Order:</label>
+              <div>
+                {sortbyArr.map((item,index)=>{
+                  return (
+                    <div style={{display:"flex",margin:'0  0 10px 10px'}}>
+                      <Select
+                        sx={{ minWidth: 300,marginRight:'10px'}}
+                        size="small"
+                        defaultValue={item.type1}
+                        value={sortby.length>0?sortby[index].split(' ')[0]:item.type1}
+                        onChange={(e)=>{handleChange(e,index)}}
+                      >
+                        <MenuItem value={"priority"}>priority</MenuItem>
+                        <MenuItem value={'published'}>published</MenuItem>
+                        <MenuItem value={'modified'}>modified</MenuItem>
+                      </Select>
+                      <ToggleButtonGroup
+                        value={sortby.length>0?sortby[index].split(' ')[1]:item.type2}
+                        exclusive
+                        onChange={(e,val)=>handleSortChange(e,val,index)}
+                        aria-label="text alignment"
+                      >
+                        <ToggleButton value="desc" >
+                          <ArrowUpwardOutlined />
+                        </ToggleButton>
+                        <ToggleButton value="asc" >
+                          <ArrowDownwardOutlined />
+                        </ToggleButton>
+                      </ToggleButtonGroup>
+                    </div>
+                  )
+                })}
+              
+              </div>
             </div>
-          </div>
-          <div>
-            <label style={{width:'60px'}}>Top:</label>
-            <TextField ref={limitInputRef} sx={{marginLeft:'10px'}} size="small" variant="outlined" defaultValue={'10'} />
-          </div>
+            <div>
+              <label style={{width:'60px'}}>Top:</label>
+              <TextField ref={limitInputRef} sx={{marginLeft:'10px'}} size="small" variant="outlined" defaultValue={limit} />
+            </div>
+          </div>}
         </DialogContent>
         <DialogActions>
-          <Button onClick={onConfirmDynamic} autoFocus> Confirm</Button>
+          <Button onClick={onConfirm} autoFocus> Confirm</Button>
           <Button onClick={handleClose}>Cancel</Button>
         </DialogActions>
-      </Dialog>
-     }
-    </div>}
+      </Dialog>}
+
+   
       
     {(ids.length===0||list.length==0)&&<div className="empty-message">Please select Content</div>}
-    
     <div className={"dm-columns columns-"+columns}>
         {list.map(item=><div style={{display:'inline-block', paddingLeft:space, paddingTop: space}} className='gallery-image'>
           <div className={'title'}>{item.title}</div>
