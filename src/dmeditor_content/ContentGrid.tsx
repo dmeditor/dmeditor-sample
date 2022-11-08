@@ -242,8 +242,8 @@ const ContentGrid = (props:ToolRenderProps) =>{
     <div className={"dm-columns columns-"+columns}>
         {list.map(item=><div style={{display:'inline-block', paddingLeft:space, paddingTop: space}} className='gallery-image'>
           <div className={'title'}>{item.title}</div>
-          <div>{item.coverimage}</div>
-          <div>{item.summary}</div>
+          <div dangerouslySetInnerHTML={{__html:item.coverimage}}></div>
+          <div dangerouslySetInnerHTML={{__html:item.summary}}></div>
         </div>)}
     </div>
   </div>
