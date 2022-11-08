@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { DMEditor } from 'dmeditor/DMEditor';
+import { DMEditor } from 'dmeditor';
 import DMInit from 'digimaker-ui/DMInit';
 import util from 'digimaker-ui/util'
 

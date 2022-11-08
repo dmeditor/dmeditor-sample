@@ -1,15 +1,12 @@
 import { BrowseGalleryOutlined, GridViewOutlined, Grid4x4Outlined,ArrowUpwardOutlined,ArrowDownwardOutlined} from "@mui/icons-material";
-//@ts-ignore
-import { ToolRenderProps } from "dmeditor/ToolDefinition";
-import {BlockProperty} from 'dmeditor/BlockProperty';
-import {PropertyGroup, PropertyItem} from 'dmeditor/utils/Property';
-import { Ranger } from "dmeditor/utils/Ranger";
-import Radio from '@mui/material/Radio';
 
-import Browse from 'digimaker-ui/Browse';
-import DMInit from 'digimaker-ui/DMInit';
-//@ts-ignore
-import util,{FetchWithAuth} from 'digimaker-ui/util'
+
+import { ToolRenderProps, BlockProperty } from "dmeditor";
+import {PropertyGroup, PropertyItem, Ranger} from 'dmeditor/utils';
+
+import {Browse} from 'digimaker-ui';
+
+import {FetchWithAuth} from 'digimaker-ui/util'
 import { useEffect, useState,useRef } from "react";
 import {IconButton,Input,TextField,Select,MenuItem, ToggleButtonGroup,ToggleButton, Button, FormControlLabel, RadioGroup,Dialog,DialogActions,DialogContent,DialogTitle,Tabs ,Tab , Box } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';

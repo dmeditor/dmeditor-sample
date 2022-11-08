@@ -1,6 +1,6 @@
 import { Button, Input } from "@mui/material"
 import { useState } from "react"
-// @ts-ignore
+
 import util from 'digimaker-ui/util'
 import Cookies from 'universal-cookie';
 
