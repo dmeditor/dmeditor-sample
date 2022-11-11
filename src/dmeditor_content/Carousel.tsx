@@ -97,9 +97,9 @@ function BlockCarousel(props: ToolRenderProps) {
   };
   return (
     <>
-      <BlockProperty active={props.active}>
-        <PropertyGroup header="Carousel">
-          <PropertyItem label="height">
+      <BlockProperty title='Carousel' active={props.active}>
+        <PropertyGroup header="Settings">
+          <PropertyItem label="Height">
             <Ranger
               min={1}
               max={500}
@@ -108,7 +108,7 @@ function BlockCarousel(props: ToolRenderProps) {
               onChange={(v) => setHeight(v)}
             />
           </PropertyItem>
-          <PropertyItem label="indicators">
+          <PropertyItem label="Indicators">
             <IOSSwitch
               checked={indicators}
               onChange={(e) => {
@@ -117,7 +117,7 @@ function BlockCarousel(props: ToolRenderProps) {
               sx={{ m: 1 }}
             />
           </PropertyItem>
-          <PropertyItem label="slide">
+          <PropertyItem label="Slide">
             <IOSSwitch
               checked={slide}
               onChange={(e) => {
@@ -126,7 +126,7 @@ function BlockCarousel(props: ToolRenderProps) {
               sx={{ m: 1 }}
             />
           </PropertyItem>
-          <PropertyItem label="fade">
+          <PropertyItem label="Fade">
             <IOSSwitch
               checked={fade}
               onChange={(e) => {
@@ -135,7 +135,7 @@ function BlockCarousel(props: ToolRenderProps) {
               sx={{ m: 1 }}
             />
           </PropertyItem>
-          <PropertyItem label="controls">
+          <PropertyItem label="Controls">
             <IOSSwitch
               checked={controls}
               onChange={(e) => {
@@ -144,7 +144,7 @@ function BlockCarousel(props: ToolRenderProps) {
               sx={{ m: 1 }}
             />
           </PropertyItem>
-          <PropertyItem label="autoplay">
+          <PropertyItem label="Autoplay">
             <IOSSwitch
               onChange={(event) => {
                 changeInterval(event);
