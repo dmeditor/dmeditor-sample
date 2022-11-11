@@ -20,6 +20,8 @@ import './DMEditorInit';
 import { Button } from 'react-bootstrap';
 import { Close, Menu as MenuIcon, Save, UndoOutlined } from '@mui/icons-material';
 import { getViewSettings } from './dmConfig';
+import { BrowseImage } from './dmeditor_content/BrowseImage';
+import { BrowseLink } from './dmeditor_content/BrowseLink';
 
 function App(props:{html?:string}) { 
   // cookies.set( util.getCookieKey(),'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjY2MjM0MjIsImd1aWQiOiI4YWIzOGNkNS1hM2IyLTRmOTYtYjU2OS0yMDdkYWViM2VjYzQiLCJ1c2VyX2lkIjoxfQ.vIX4pO-NhYlNEocah8jW3aK1DmakqT2J00R7W0tij7s');
@@ -48,8 +50,7 @@ function App(props:{html?:string}) {
                     }
                   ],
                 }
-              }]} />}> 
-            
+              }]}  imageBrowse={BrowseImage} linkBrowse={BrowseLink}/>}> 
               </Route>          
             <Route>
             </Route>
