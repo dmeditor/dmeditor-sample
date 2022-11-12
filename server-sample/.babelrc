@@ -1,0 +1,5 @@
+{
+    
+    "plugins":["css-modules-transform", "file-loader"]
+
+}

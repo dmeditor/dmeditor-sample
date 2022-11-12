@@ -1,0 +1,32 @@
+{
+  "name": "dmeditor-server",
+  "version": "1.0.0",
+  "description": "DMEditor Server side rendering sample",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "serve": "tsc -w"
+  },
+  "author": "Anup Shinde & Chen Xiongjie",
+  "dependencies": {
+    "@types/react": "^16.9.0",
+    "axios": "^0.15.2",
+    "babel-plugin-css-modules-transform": "^1.6.2",
+    "babel-plugin-file-loader": "^2.0.0",
+    "create-react-class": "^15.7.0",
+    "dmeditor": "^0.1.0-alpha.6",
+    "express": "^4.14.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-dom-factories": "^1.0.2",
+    "webpack": "^5.75.0"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-shell": "^0.5.2",
+    "rimraf": "^2.5.4",
+    "run-sequence": "^1.2.2"
+  }
+}
