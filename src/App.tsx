@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { DMEditor } from 'dmeditor';
+import { DMEditor, DMEditorView } from 'dmeditor';
 import DMInit from 'digimaker-ui/DMInit';
 import util from 'digimaker-ui/util'
 
@@ -52,6 +52,22 @@ function App(props:{html?:string}) {
                 }
               }]}  imageBrowse={BrowseImage} linkBrowse={BrowseLink}/>}> 
               </Route>          
+              <Route path="/view" element={<DMEditorView data={[{
+                type:'text',
+                content:{ 
+                  initialValue:[
+                    {type: 'paragraph',
+                    children:[ 
+                      {
+                        text: 'Please input more text.',
+                      }
+                      ]
+                    }
+                  ],
+                }
+              }]}  imageBrowse={BrowseImage} linkBrowse={BrowseLink}/>}> 
+              </Route>          
+              
             <Route>
             </Route>
           </Routes>
