@@ -257,4 +257,5 @@ export const  toolContentGrid =   {
       icon: <GridViewOutlined />,
     },
 initData: {type:'content_grid', content:[], settings:{contentType:'article', columns:3, space:5}},
+view: (props:{data:Array<any>})=><ContentGrid data={props.data} active={false} onChange={()=>{}} />,
 render: (props:ToolRenderProps)=> <ContentGrid {...props} /> }

@@ -211,5 +211,6 @@ export const toolCarousel: ToolDefinition = {
       interval: true,
     },
   },
+  view: (props:{data:Array<any>})=><BlockCarousel data={props.data} active={false} onChange={()=>{}} />,
   render: (props: ToolRenderProps) => <BlockCarousel {...props} />,
 };

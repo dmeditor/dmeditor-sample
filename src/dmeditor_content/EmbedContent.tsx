@@ -104,4 +104,5 @@ menu: {
   icon: <SquareOutlined />,
 },
 initData: {type:'content_Embed', content:[], settings:{contentType:'article'}},
+view: (props:{data:Array<any>})=><EmbedContent data={props.data} active={false} onChange={()=>{}} />,
 render: (props:ToolRenderProps)=> <EmbedContent {...props} /> }

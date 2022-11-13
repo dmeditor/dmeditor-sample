@@ -5,7 +5,7 @@ import {PropertyGroup, PropertyItem, Ranger} from 'dmeditor/utils';
 
 import Radio from '@mui/material/Radio';
 
-import Browse from 'digimaker-ui/Browse';
+import {Browse} from 'digimaker-ui';
 import {FetchWithAuth} from 'digimaker-ui/util'
 import { useEffect, useState } from "react";
 import { Button, FormControlLabel, RadioGroup } from "@mui/material";
@@ -75,4 +75,5 @@ menu: {
   icon: <CollectionsOutlined />,
 },
 initData: {type:'content_gallery', content:[], settings:{contentType:'image', columns:3, space:5}},
+view: (props:{data:Array<any>})=><Gallery data={props.data} active={false} onChange={()=>{}} />,
 render: (props:ToolRenderProps)=> <Gallery {...props} /> }
