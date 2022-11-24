@@ -28,8 +28,9 @@ function renderPage(reactClass, resp,  data) {
 
 
 app.use('/static', express.static(__dirname + '/static'));
+app.use(express.json())
 
-app.get('*', function (req, res) {
+app.all('*', function (req, res) {
   var path = sanitize_path(req.url);
   var mod = null;
   var mod_path = './ts_compiled/pages'+path; // Restricted to pages. Anything within will be rendered.
@@ -44,6 +45,8 @@ app.get('*', function (req, res) {
       console.error(e.stack)
     }
 
+    const bodyJson = req.body;
+
     if(mod && mod.default) {
       var cls = mod.default;
       
@@ -53,10 +56,10 @@ app.get('*', function (req, res) {
       }
       if(initialPropsPromise) {
         initialPropsPromise.then(function(data) { 
-          renderPage(cls, res, data);
+          renderPage(cls, res, {...data, data:bodyJson});
         })
       } else {
-        renderPage(cls, res, null)
+        renderPage(cls, res, {data:bodyJson})
       }
     }
 
