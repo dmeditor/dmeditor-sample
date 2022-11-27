@@ -3,19 +3,23 @@
 const fs = require('fs');
 const express = require('express');
 const React = require('react');
+const {serverLoad} = require('dmeditor');
 const ReactDOMServer = require('react-dom/server')
 const app = express();
+const axios = require('axios')
 
 function sanitize_path(path) {
   return path.split('.').join('');
 }
 
 
-function renderPage(reactClass, resp,  data) {
+async function renderPage(reactClass, resp,  data) {
   var status_code = 200;
   var html = '';
   try {
-    var react_element = React.createElement(reactClass, data);
+    
+    data = await serverLoad(data.data);
+    var react_element = React.createElement(reactClass, {data:data});
     html = ReactDOMServer.renderToString(react_element); 
     ////html = ReactDOMServer.renderToStaticMarkup(react_element); // use if you don't need react-ids'
   } catch(e) {
@@ -30,7 +34,7 @@ function renderPage(reactClass, resp,  data) {
 app.use('/static', express.static(__dirname + '/static'));
 app.use(express.json())
 
-app.all('*', function (req, res) {
+app.all('*', async function (req, res) {
   var path = sanitize_path(req.url);
   var mod = null;
   var mod_path = './ts_compiled/pages'+path; // Restricted to pages. Anything within will be rendered.
