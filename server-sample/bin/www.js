@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 "use strict";
 
+require('dotenv').config()
+
 //module dependencies.
 var app = require("../app");
 var debug = require("debug")("express:server");
@@ -60,11 +62,13 @@ function onListening() {
   var bind = typeof addr === "string"
     ? "pipe " + addr
     : "port " + addr.port;
+  console.info('key');
+  console.info(process.env.REACT_APP_DMEDITOR_CONTENT_VIEW_SERVER_APIKEY);
   console.info("Listening on " + bind);
 }
 
 //get port from environment and store in Express.
-var port = normalizePort(process.env.PORT || 8080);
+var port = normalizePort(process.env.PORT || 8086);
 app.set("port", port);
 
 //create http server
