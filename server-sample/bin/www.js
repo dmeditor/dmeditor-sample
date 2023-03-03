@@ -62,8 +62,6 @@ function onListening() {
   var bind = typeof addr === "string"
     ? "pipe " + addr
     : "port " + addr.port;
-  console.info('key');
-  console.info(process.env.REACT_APP_DMEDITOR_CONTENT_VIEW_SERVER_APIKEY);
   console.info("Listening on " + bind);
 }
 
