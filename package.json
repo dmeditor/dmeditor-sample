@@ -19,7 +19,7 @@
     "@types/react-dom": "^18.0.5",
     "bootstrap": "^5.2.2",
     "digimaker-ui": "^0.2.0-beta.4",
-    "dmeditor": "^0.1.0-alpha.6",
+    "dmeditor": "^0.1.0-beta.3",
     "html-react-parser": "^2.0.0",
     "image-extensions": "^1.1.0",
     "install": "^0.13.0",
