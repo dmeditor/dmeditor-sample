@@ -8,7 +8,7 @@ Sample for DMEditor
 ### Run 
 
 ```
-npm install dmeditor
+npm install
 
 
 npm start
