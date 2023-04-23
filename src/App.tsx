@@ -13,7 +13,7 @@ function App(props:{html?:string}) {
       </header>
         <DMEditor data={data} menu={
         <div className='sample-actions'>
-        <button title='See json data' className='btn' onClick={()=>{console.log(data); alert(JSON.stringify(data))}}><i className="bi bi-code-slash"></i></button>        
+        <button title='See json data' className='btn' onClick={()=>{alert(JSON.stringify(data))}}><i className="bi bi-code-slash"></i></button>        
         <a href="https://dmeditor.io" target='_blank'><button title='dmeditor.io' className='btn'><i className="bi bi-question-circle"></i></button></a>
         </div>
         } onChange={(data)=>setData(data)} />        
