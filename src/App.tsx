@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import {DMEditor} from 'dmeditor';
 
 function App(props:{html?:string}) { 
 
+  const [data, setData] =useState<Array<any>>([]);
+
+
   return (
     <div className="App">
       <header className="App-header">
       </header>
-        <DMEditor data={[]} />        
+        <DMEditor data={data} menu={
+        <div className='sample-actions'>
+        <button title='Output' className='btn' onClick={()=>{console.log(data); alert(JSON.stringify(data))}}><i className="bi bi-code-slash"></i></button>        
+        <a href="https://dmeditor.io" target='_blank'><button title='dmeditor.io' className='btn'><i className="bi bi-question-circle"></i></button></a>
+        </div>
+        } onChange={(data)=>setData(data)} />        
         </div>
   );
 }
