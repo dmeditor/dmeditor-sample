@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
-import {DMEditor} from 'dmeditor';
+import {DMEditor, registerTool} from 'dmeditor';
+import {toolSampleWidget} from './SampleWidget'
+
+registerTool(toolSampleWidget);
 
 function App(props:{html?:string}) { 
 
