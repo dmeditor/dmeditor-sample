@@ -2,8 +2,8 @@
 
 Sample for DMEditor, including: 
 
-- Widget sample: src/SampleWidget.tsx
-- Template sample: src/SampleTemplate.tsx
+- Widget sample: `src/SampleWidget.tsx`
+- Template sample: `src/SampleTemplate.tsx`
 
 
 
