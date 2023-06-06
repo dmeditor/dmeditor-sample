@@ -31,6 +31,5 @@ export const toolSampleWidget:ToolDefinition = {
     name: 'Sample widget',
     menu:  {category:'basic',icon: <span>A</span> },
     initData: ()=>{return {type:'sample', data:'This is a sample.', settings:{}}},
-    view: (props:{data:any})=><SampleWidget view={true} data={props.data} inBlock={false} active={false} onChange={()=>{}} />,
     render: (props:ToolRenderProps)=><SampleWidget {...props} />
 }
