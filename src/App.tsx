@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import {DMEditor, registerTool} from 'dmeditor';
 import {toolSampleWidget} from './SampleWidget'
-import './SampleTemplate';
+import './SampleStyle';
 
 registerTool(toolSampleWidget);
 
