@@ -21,10 +21,10 @@ body{
 }
 
 .App-header {
-  width: 100px;
-  position: fixed;
-  padding: 10px;
+  padding: 20px 10px;
   left:0px;
+  background-color: #69106c;
+  color: white;
 }
 
 .App-link {
