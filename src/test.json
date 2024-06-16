@@ -1,0 +1,268 @@
+[
+  {
+    "type": "image",
+    "data": { "url": 23, "text": "" },
+    "settings": {
+      "fullScreen": false,
+      "borderWidth": 0,
+      "borderColor": "transparent",
+      "style": {}
+    },
+    "source": {
+      "sourceType": "select",
+      "sourceData": {
+      }
+    },
+    "id": "a2J0vhe7YSd"
+  },
+  {
+    "type": "heading",
+    "data": "Enjoy benefits through your union members",
+    "common": { "width": "auto" },
+    "settings": { "level": 2, "style": {}, "id": "" },
+    "id": "aga1y2NGydC"
+  },
+  {
+    "type": "text",
+    "data": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "text": "There is a lot of money to be saved by using our member benefits. As a member, you get access to one of the market's best insurance schemes, cheaper loans, opportunities for scholarships and further education, good pension solutions, free legal assistance and discounts on a number of services such as electricity, car hire, fuel and hotels."
+          }
+        ]
+      }
+    ],
+    "id": "aHtuVe5r4MG"
+  },
+  {
+    "type": "collapsable_text",
+    "settings": { "style": {} },
+    "data": {
+      "title": "Show main benefits",
+      "body": [
+        {
+          "type": "text",
+          "id": "2",
+          "data": [
+            {
+              "type": "bulleted-list",
+              "children": [
+                { "type": "list-item", "children": [{ "text": "Legal aid." }] },
+                {
+                  "type": "list-item",
+                  "children": [{ "text": "Family insurance" }]
+                },
+                {
+                  "type": "list-item",
+                  "children": [{ "text": "Bank agreement" }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "id": "a7DXG8ehXlL",
+    "style": "bold"
+  },
+  {
+    "type": "text",
+    "data": [
+      {
+        "type": "paragraph",
+        "children": [
+          { "text": "" },
+          {
+            "type": "link",
+            "url": "/content/view/497",
+            "children": [{ "text": "Become member" }],
+            "source": { "sourceType": "input" },
+            "styleConfig": {
+              "style": "button",
+              "setting": {
+                "size": "medium",
+                "variant": "contained",
+                "color": "dark"
+              }
+            }
+          },
+          { "text": "" }
+        ]
+      }
+    ],
+    "id": "aoi9EWM2Po1"
+  },
+  {
+    "type": "content_grid",
+    "data": [
+      "\n\n\n\n\n\n\n\n\n  \n     \n    \n        \n                \n                <a href=\"/content/view/494\">\n<h3>Legal aid</h3>\n\n<img class=\"dme-contentgrid-coverimage\" src=\"/var/images/n/nxz/upload-865806181-club-2492011_1280.jpg\" />\n\n</a>\n\n        \n    \n\n   \n\n",
+      "\n\n\n\n\n\n\n\n\n  \n     \n    \n        \n                \n                <a href=\"/content/view/495\">\n<h3>Family insurance</h3>\n\n<img class=\"dme-contentgrid-coverimage\" src=\"/var/images/o/owp/upload-111690378-family-gc05002fe2_1280.jpg\" />\n\n</a>\n\n        \n    \n\n   \n\n",
+      "\n\n\n\n\n\n\n\n\n  \n     \n    \n        \n                \n                <a href=\"/content/view/496\">\n<h3>Bank agreement</h3>\n\n<img class=\"dme-contentgrid-coverimage\" src=\"/var/images/s/sxd/upload-3402355116-money-g60bd1e0a3_1280.jpg\" />\n\n</a>\n\n        \n    \n\n   \n\n"
+    ],
+    "settings": { "columns": 3, "space": 6, "viewMode": "editor_block" },
+    "style": "orange",
+    "id": "aw7dZm-RyZu",
+    "source": {
+      "sourceType": "fixed",
+      "sourceData": [
+        
+      ]
+    }
+  },
+  {
+    "type": "heading",
+    "settings": { "level": 2, "style": {}, "id": "" },
+    "data": "Still not a union member?\n",
+    "common": { "marginTop": 40 },
+    "style": "orange_bg",
+    "id": "aR07x0DD8V-"
+  },
+  {
+    "type": "text",
+    "data": [
+      {
+        "type": "paragraph",
+        "children": [{ "text": "Become a member and get all the benefits too" }]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          { "text": "" },
+          {
+            "type": "link",
+            "url": "/content/view/497",
+            "children": [{ "text": "Become member" }],
+            "source": { "sourceType": "input" },
+            "styleConfig": {
+              "style": "button",
+              "setting": {
+                "size": "medium",
+                "variant": "contained",
+                "color": "dark"
+              }
+            }
+          },
+          { "text": "" }
+        ]
+      }
+    ],
+    "id": "av6Sq1OJatX"
+  },
+  {
+    "type": "accordion",
+    "settings": { "childrenHorizontal": false },
+    "data": "",
+    "common": {},
+    "children": [
+      {
+        "type": "list",
+        "id": "1",
+        "data": "Why apply for membership?",
+        "children": [
+          {
+            "type": "heading",
+            "id": "1",
+            "data": "",
+            "common": {},
+            "settings": { "level": 2, "id": "" }
+          },
+          {
+            "type": "text",
+            "id": "2",
+            "data": [
+              {
+                "type": "paragraph",
+                "children": [{ "text": "Why to be a membr?", "bold": true }]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "There are two reasons why union membership is important: It pays for you – and it pays for society."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "It pays off for you, because it gives you a number of advantages - both at work and privately."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "It pays off for society, because it is the cooperation between trade unions, employers and authorities that ensures many of the welfare benefits we all enjoy. The more people who are part of trade unions, the better this cooperation works."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "common": {},
+        "setting": {}
+      },
+      {
+        "type": "list",
+        "id": "aszMVwicJA3",
+        "data": "How much does it cost?\n\n",
+        "children": [
+          {
+            "type": "text",
+            "id": "1lhyyDsa8_fAqKmpTHFrq",
+            "data": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Being a member of us only costs a few kroner per day!",
+                    "bold": true
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [{ "text": "Quota rates from 1 January 2023" }]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "The membership fee is 1.2 per cent of gross salary and fixed allowances (not overtime and variable allowances), a maximum of NOK 535 per month. The minimum quota is NOK 90 per month."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "For members of the union B, the dues are 1.15 per cent of gross salary and fixed allowances (not overtime and variable allowances)."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "id": "alDR8qRiylA",
+        "data": "Want to try our benefit calculator?\n\n",
+        "children": [
+          {
+            "type": "heading",
+            "data": "End of test page...\n",
+            "common": { "width": "auto" },
+            "settings": { "level": 2, "style": {}, "id": "" },
+            "id": "aht8zgsnrZd"
+          }
+        ]
+      }
+    ],
+    "id": "ajHEipoxn65"
+  }
+]
