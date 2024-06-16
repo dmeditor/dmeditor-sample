@@ -1,40 +1,17 @@
-import * as React from "react";
 import { nanoid } from "nanoid";
+import "./App.css";
 import {
   DMEditor,
   DMEditorRefType,
   registerDefaultWidgets,
   setDMEditorConfig,
 } from "dmeditor";
+import { useEffect, useRef } from "react";
+import { dmeditorInit } from "./dmeditorInit";
+import { registerStyles } from "./registerStyles";
 
-registerDefaultWidgets();
-
-setDMEditorConfig({
-  general: {
-    projectStyles: {
-      default: `background: white`,
-    },
-  },
-  editor: {
-    defaultTheme: "default",
-    favouriteWidgets: ["text", "button"],
-    enableEditControl: true,
-    categories: [{ identifier: "sample", name: "Sample" }],
-    defaultStyle: {
-      heading: { _: "theme" },
-      button: { _: "project-primary" },
-    },
-    ui: {
-      "bg-editarea": "#666666",
-    },
-  },
-  widgets: {
-    heading: { defaultStyle: { _: "big-space" } },
-  },
-  plugins: {},
-});
-
-const { useRef, useEffect } = React;
+dmeditorInit();
+registerStyles();
 
 const App = () => {
   const editorRef = useRef<DMEditorRefType>(null);
