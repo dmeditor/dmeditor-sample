@@ -5,8 +5,6 @@ import { Slider } from "@mui/material";
 import { DME, useEditorStore } from "dmeditor";
 import { EntitySampleWidget } from "./entity";
 
-const { useState, useEffect } = React;
-
 export const SampleWidget = (
   props: DME.WidgetRenderProps<EntitySampleWidget>
 ) => {
