@@ -6,7 +6,7 @@ import {
   setDMEditorConfig,
 } from "dmeditor";
 import { preDefinedStyles } from "./dme_predefined_styles";
-import registerSampleWidget from "../widgets/Sample-widget";
+import registerSampleWidget from "../widgets/sample-widget";
 import { styles } from "./dme_styles";
 
 export const dmeditorInit = () => {
