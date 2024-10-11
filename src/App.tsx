@@ -7,26 +7,24 @@ import {
   setDMEditorConfig,
 } from "dmeditor";
 import { useEffect, useRef } from "react";
-import { dmeditorInit } from "./dmeditorInit";
-import { registerStyles } from "./registerStyles";
+import { dmeditorInit } from "./dme-config/dmeditorInit";
 
 dmeditorInit();
-registerStyles();
 
 const App = () => {
   const editorRef = useRef<DMEditorRefType>(null);
   const data = [
     {
       id: `widget-${nanoid()}`,
+      style: { _: "_default" },
       data: {
         value: "This is a heading",
         level: 2,
         settings: {
           align: "left",
           general: {
-            padding: 80,
+            padding: 50,
           },
-          // value: '',
         },
       },
       type: "heading",
