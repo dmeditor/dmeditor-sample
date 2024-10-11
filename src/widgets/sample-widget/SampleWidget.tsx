@@ -30,7 +30,7 @@ export const SampleWidget = (
       <div
         className={css`
           height: 300px;
-          width: ${settings.width};
+          width: ${settings.width}px;
           background: ${settings.insideBackground ?? "#ffe3e3"};
         `}
       >

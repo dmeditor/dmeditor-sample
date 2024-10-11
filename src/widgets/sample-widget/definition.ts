@@ -35,7 +35,7 @@ export const sampleWidgetDef = {
       id: nanoid(),
       type: "sample",
       data: {
-        text: "Sample",
+        text: "Sample text",
         settings: {
           width: 300,
           insideBackground: "#cccccc",
