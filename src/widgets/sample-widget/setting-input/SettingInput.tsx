@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 
 import { DME, useEditorStore } from "dmeditor";
 

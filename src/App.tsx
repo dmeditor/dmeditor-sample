@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import "./App.css";
 import { DMEditor, DMEditorRefType } from "dmeditor";
 import { useEffect, useRef } from "react";

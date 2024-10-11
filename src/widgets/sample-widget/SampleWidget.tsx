@@ -28,9 +28,9 @@ export const SampleWidget = (
   return (
     <div>
       <div
-        style={{ width: settings.width }}
         className={css`
           height: 300px;
+          width: ${settings.width};
           background: ${settings.insideBackground ?? "#ffe3e3"};
         `}
       >

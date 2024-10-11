@@ -1,5 +1,3 @@
-import { nanoid } from "nanoid";
-
 import { sampleWidgetDef } from "./definition";
 import SampleWidget from "./SampleWidget";
 import SettingInput from "./setting-input/SettingInput";

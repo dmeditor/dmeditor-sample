@@ -14,8 +14,8 @@ Use DM Editor:
 Develop style / widgets:
 
 - Define styles:
-  - Predefined: [`dme-config/dme_predefined_styles.js`](src/dme-config/dme_predefined_styles.js)
-  - Categorized: [`dme-config/dme_styles.js`](src/dme-config/dme_styles.js)
+  - Uncategorized style: [`dme-config/dme_predefined_styles.js`](src/dme-config/dme_predefined_styles.js)
+  - Categorized style: [`dme-config/dme_styles.js`](src/dme-config/dme_styles.js)
 - Widget sample: [`src/widgets/sample-widget`](src/widgets/sample-widget)
 
 ### Run
