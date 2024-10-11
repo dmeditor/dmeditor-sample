@@ -10,7 +10,7 @@
  }
  */
 
- export const defaultStyles = {
+ export const preDefinedStyles = {
     heading:[{
         identifier:'_default', 
         name:'Default',
@@ -27,6 +27,7 @@
         settings: { "settings.general.marginTop": { value: 10 },  "settings.general.padding": { value: 10, status: 'disabled' }, "settings.general.background": { value: '#ffcc00' } },
         cssClasses:{
             root:'border-l-8 border-blue-800 pl-2',
+            h2:'text-3xl font-bold',
         },
         cssStyle:``
     },
@@ -38,13 +39,14 @@
             name:'Default',
             cssClasses:{
                 nav:'pl-2',
-                active: '-mb-px font-medium border-t border-b border-b-white border-blue-900 border-x rounded-t-sm text-primary-t',
+                active: '-mb-px font-medium border-t border-b border-b-white border-neutral-200 border-x rounded-t-sm text-primary-t',
                 'nav-item':'py-1 px-6',
                 body: 'border border-border-main p-4'
             },
             cssStyle:`
             `
-        }],
+        },
+    ],
     table:[{
         identifier: '_default',
         name: 'Default',

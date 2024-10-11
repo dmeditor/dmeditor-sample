@@ -5,19 +5,21 @@ import {
   registerWidgetStyleOption,
   setDMEditorConfig,
 } from "dmeditor";
-import { defaultStyles } from "./dme_pre_styles";
+import { preDefinedStyles } from "./dme_predefined_styles";
 import registerSampleWidget from "../widgets/Sample-widget";
 import { styles } from "./dme_styles";
 
 export const dmeditorInit = () => {
+  /** init default widget */
   registerDefaultWidgets();
 
+  /** add custom widget */
   registerSampleWidget();
 
-  const defaultStyleWidets = Object.keys(defaultStyles);
+  const defaultStyleWidets = Object.keys(preDefinedStyles);
   const defaultStyleConfig: any = {};
   for (const widget of defaultStyleWidets) {
-    const option = (defaultStyles as any)[widget];
+    const option = (preDefinedStyles as any)[widget];
     registerWidgetStyleOption(widget, option);
     defaultStyleConfig[widget] = { _: "_default" };
   }

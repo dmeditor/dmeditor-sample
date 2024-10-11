@@ -22,9 +22,6 @@ const App = () => {
         level: 2,
         settings: {
           align: "left",
-          general: {
-            padding: 50,
-          },
         },
       },
       type: "heading",

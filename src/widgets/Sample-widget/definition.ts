@@ -5,7 +5,7 @@ import { generalSettings } from "dmeditor";
 export const sampleWidgetDef = {
   type: "sample",
   name: "Sample widget",
-  category: "basic",
+  category: "sample",
   icon: "A",
   settings: [
     {
