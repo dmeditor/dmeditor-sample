@@ -16,13 +16,16 @@ export const sampleWidgetDef = {
     {
       name: "Inside background",
       settingComponent: "color",
-      category: "block",
+      category: "style",
+      parameters: {
+        colorGroup: "background",
+      },
       property: "settings.insideBackground",
     },
     {
       name: "Width",
       settingComponent: "setting_input",
-      category: "block",
+      category: "style",
       property: "settings.width",
     },
     ...generalSettings,
