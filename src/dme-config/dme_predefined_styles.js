@@ -106,5 +106,20 @@
               font-weight: bold;
             }            
         `
-    }]
+    }],
+    sample:[
+        {
+            identifier: '_default',
+            name: 'Default',
+            cssClasses: '',
+            cssStyle:``,
+        },
+        {
+            identifier: 'big',
+            name: 'Big padding',
+            cssClasses: {root: 'p-4',text: 'text-2xl'},
+            cssStyle:``,
+        }
+                    
+    ]
 }

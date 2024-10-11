@@ -13,6 +13,7 @@ export const SampleWidget = (
       data: { settings, text },
     },
     path,
+    styleClasses,
   } = props;
 
   const { updateBlockByPath } = useEditorStore();
@@ -33,7 +34,7 @@ export const SampleWidget = (
           background: ${settings.insideBackground ?? "#ffe3e3"};
         `}
       >
-        {text}
+        <span className={styleClasses["text"] || "dme-w-text"}>{text}</span>
       </div>
       <div className="flex align-center">
         <div>Adjust inline:</div>
