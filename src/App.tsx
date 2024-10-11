@@ -1,11 +1,6 @@
 import { nanoid } from "nanoid";
 import "./App.css";
-import {
-  DMEditor,
-  DMEditorRefType,
-  registerDefaultWidgets,
-  setDMEditorConfig,
-} from "dmeditor";
+import { DMEditor, DMEditorRefType } from "dmeditor";
 import { useEffect, useRef } from "react";
 import { dmeditorInit } from "./dme-config/dmeditorInit";
 
@@ -41,7 +36,7 @@ const App = () => {
           },
           {
             type: "image",
-            url: "https://zeekrlife-oss.zeekrlife.com/frontend/atom/atom_json/JSON-2c293ed22f16f3602f139511e8d9479b/zeekr001_kv_2024-32788be256e0c4bcad0fced53952a5ec.png",
+            url: "https://dmeditor.c.digimaker.com/var/images/full/images/p/ptf/upload-4271003480-enterprise.jpg",
             children: [
               {
                 text: "",
@@ -73,7 +68,7 @@ const App = () => {
       editor.setPageSettings([
         { identifier: "cover_image", name: "Cover image", type: "image" },
         { identifier: "summary", name: "Summary", type: "richtext" },
-        { identifier: "meta_key", name: "Meta key", type: "text" },
+        { identifier: "meta_keyword", name: "keyword", type: "text" },
         {
           identifier: "meta_description",
           name: "Meta description",
@@ -83,7 +78,7 @@ const App = () => {
       editor.setPageData({
         title: "New page",
         theme: "red",
-        meta_key: "test key",
+        meta_keyword: "test key",
       });
     }
   }, []);
