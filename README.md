@@ -4,7 +4,7 @@ Sample for DMEditor, using tailwind for css.
 
 _Note: DM Editor is compatible with all mainstream css frameworks, like tailwind, bootstrap css-in-js (emotion or others)._
 
-Short guidance:
+### Short guidance
 
 Use DM Editor:
 
