@@ -6,9 +6,11 @@ _Note: DM Editor can be used in all css frameworks, like tailwind, bootstrap css
 
 Short explaination:
 
-- Initialization: `dme-config/dmeditorInit.ts`
-- Styles: `dme-config/dme_predefined-styles.js`, `dme-config/dme_styles.js`
-- Widget sample: `src/widgets/sample-widget`
+- Initialization: [`dme-config/dmeditorInit.ts`](src/dme-config/dmeditorInit.ts)
+- Styles:
+  - Predefined: [`dme-config/dme_predefined-styles.js`](src/dme-config/dme_predefined-styles.js)
+  - Categorized: [`dme-config/dme_styles.js`](src/dme-config/dme_styles.js)
+- Widget sample: [`src/widgets/sample-widget`](src/widgets/sample-widget)
 
 ### Run
 

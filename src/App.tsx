@@ -3,63 +3,13 @@ import "./App.css";
 import { DMEditor, DMEditorRefType } from "dmeditor";
 import { useEffect, useRef } from "react";
 import { dmeditorInit } from "./dme-config/dmeditorInit";
+import defaultData from "./data/default.json";
 
 dmeditorInit();
 
 const App = () => {
   const editorRef = useRef<DMEditorRefType>(null);
-  const data = [
-    {
-      id: `widget-${nanoid()}`,
-      style: { _: "_default" },
-      data: {
-        value: "This is a heading",
-        level: 2,
-        settings: {
-          align: "left",
-        },
-      },
-      type: "heading",
-    },
-    {
-      id: "N-LAQWihvfZv1SmUAPoQx",
-      type: "text",
-      data: {
-        value: [
-          {
-            type: "paragraph",
-            children: [
-              {
-                text: "",
-              },
-            ],
-          },
-          {
-            type: "image",
-            url: "https://dmeditor.c.digimaker.com/var/images/full/images/p/ptf/upload-4271003480-enterprise.jpg",
-            children: [
-              {
-                text: "",
-              },
-            ],
-            setting: {
-              width: 127,
-              height: 71,
-              scale: 1.79,
-            },
-          },
-          {
-            type: "paragraph",
-            children: [
-              {
-                text: "",
-              },
-            ],
-          },
-        ],
-      },
-    },
-  ];
+  const data = defaultData;
 
   useEffect(() => {
     const editor = editorRef.current;
